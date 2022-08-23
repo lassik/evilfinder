@@ -1,0 +1,18 @@
+
+  This is EvilFinder, copyright by Michal Zalewski <lcamtuf@coredump.cx>.
+
+  This tiny program goes thru a database of numerologically significant
+  positive integers (dates, magic numbers, etc) in the evilnumbers.dat
+  file, and tries to transform a given input in a way that would yield
+  one of arch-evil numbers, such as 666, thus proving that the subject
+  is evil. This is useful for proving that Windows, Linux, Bill Gates,
+  Jerry Springer or you are in fact the devil himself.
+
+  The program is written for a CGI script, so it returns HTML. Input 
+  is taken from the environment variable QUERY_STRING_UNESCAPED after
+  first =, for example:
+
+  QUERY_STRING_UNESCAPED='_=hello' ./ef | lynx -dump -force_html /dev/stdin
+
+  Of course, this is not very sexy, but c'mon. It's a web application.
+

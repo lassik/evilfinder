@@ -1,0 +1,114 @@
+#
+# EvilFinder configuration file
+# Copyright (C) 2002 by Michal Zalewski <lcamtuf@coredump.cx>
+#
+# Format of this file:
+#
+# [*]number	description
+#
+# If the number is prefixed with '*', it is considered a 'proof'. In other
+# words, as soon as the program manages to get to this number, the subject
+# is considered to be proven evil. Pick only universally recognized, truly
+# evil numbers (666, or the year US patent system was established). 
+#
+# Other numbers are used to reach the desired result. Use anything, dates,
+# important numerological symbols, etc, etc.
+#
+# The description part should have less than +/- 100 chars and should describe
+# the number in a manner that is suitable to follow the number in the sentence.
+# For example, "the year Michael Jackson was born" or "the symbol of sin"
+# are correct, "this is my favorite number" is not. Make the descriptions
+# colorful and vivid, if possible. It's OK to combine elements of conspiration
+# theories or such with the descriptions. Make sure that all descriptions
+# and numbers are "evil". Don't include events or numbers that do not refer
+# to any disasters, plagues, are related to very little known and boring
+# facts, etc.
+#
+
+*1790	the year US patent system was established (eevil)
+*666	the number of the Beast
+1778    the year Oliver Pollock invented '$', the symbol of exploitation, suffering and injustice
+1936    the year Bruno Hauptmann, baby killer, was executed
+1964	the year Beatles with "Can't buy me love" topped the charts in a very mysterious way
+1968    the year Martin Luther King was shot to death
+1531    the year Richard Roose was conveniently boiled to death for trying to poison an archbishop
+1951	the year the Rosenbergs were sentenced to death for spying by the US
+1954	the year Elvis recorded his debut single, putting the end to all morality and good taste
+1926	the year "Playboy" publisher, Hugh Hefner, was born
+1912	the year Titanic went for its first and last voyage
+1930	the year synthetic rubber was first produced, endangering the concept of intercourse for the purpose of procreation
+1899	the year "Scrabble" was invented to promote violence and anger
+1865 	the year Lincoln was shot
+1934	the year first laundromat opened in Texas, giving birth to darkest, twisted urban fears
+1934	the year Shirley Temple starred in her first movie
+*1889	the year Adolf Hitler was born
+*1976	the year George Harrison performed the lumberjack song with Monty Python - if you have seen it, you should understand
+1904	the year Oppenheimer, the man who created the atomic bomb, was born
+1792 	the year guillotine was first used
+1945	the year a worldwide conspiracy known as the United Nations was founded
+1895	the year Rudolph Hess was born
+1986	the year of the Chernobyl "incident"
+1686	the year Newton published wildly misunderstood "Principia"
+1937	the year Saddam Hussein twins were born
+1945	the year Mussolini was executed for the first time
+1808	the year Turri constructed the first typewriter, giving birth to bad publicity
+1945	the year Hitler faked his suicide
+1945	the year Hiroshima and Nagasaki were nuked to make the world a better place
+1181	the year UFO was first observed in China and Japan
+1950	the year Steve Wozniak, the faithful worshipper, was born
+1887	the year Erwin Schrodinger, known for hatred to all furry animals and heresy, was born
+1927	the year Fidel Castro was born
+1939	the year WW II started
+1969	the year of Woodstock
+1977	the year Elvis left the planet
+1834	the year Vesuvius erupted
+1958	the year Nabokov's "Lolita" got published
+1986	the year a postman in Okhlahoma gone postal, killing 14
+1957	the year DEC was founded
+79	the year Vesuvius erupted
+64	the year of the Great Fire of Rome
+166	the year Roman Empire was devastated by a plague
+445	the year Attila the Hun attacked western Europe
+1609	the year Gallileo, inspired by the Satan himself, came up with his ridiculous theory
+1789	the year of French Revolution, a bloody farce engineered by the Illuminati
+1929	the year Bingo was invented, taking many lives in years to come
+1952	the year killer fog haunted London
+1776 	the year masonry founded Phi Beta Kappa
+1876	the year first crematorium in the United States opened
+1947	the year Aleister Crowley paid a longer visit to hell
+1815	the year first commercial cheese factory was established
+1288	the year it was made legal for women to propose to men
+69	the year of the destruction of Jerusalem
+69	the symbol of perversion and pleasue in sin
+1666	the year of the Great London Fire
+1948	the year World Health Organization was formed to defend the world from democracy
+1957 	the year Ford introduced the Edsel
+1966 	the year "Star Trek" premiered
+1875 	the year first newspaper cartoon strip was published
+1970 	the year IBM announced S/370
+1954 	the year when first FORTRAN computer program was executed
+1995	the year O J Simpson was acquitted for double murder
+1967 	the year Che Guevara was executed in Bolivia
+1912 	the year Theodore Roosevelt was shot
+1979 	the year Voluntary Euthanasia Society published how-to-do-it suicide guide
+1	the number of unity 
+3	the symbol of fulfillment
+7	the sacred number of Illuminati
+11	the symbol of judgment and disorder
+17	the symbol of domination
+18	the symbol of bondage
+21	the symbol of the greater sin
+23	the symbol of death
+25	the symbol of approval for the sin
+38	the symbol of slavery
+39	the symbol of disease
+200	the symbol of greed
+600	the symbol of war
+111	the only triplet that can ever be prime
+6	the smallest perfect number
+1983	the year Microsoft introduced Windows 1.0
+140     the smallest harmonic divisor number
+911	the date of WTC attacks
+
+
+
