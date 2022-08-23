@@ -507,6 +507,7 @@ int stopped;
 int retrynum;
 
 void interrupter(int x) {
+  (void)x;
   restop = MAXRES + 1;
   // printf("...restart.\n");
   stopped = 1;
@@ -573,7 +574,7 @@ int main(void) {
   }
 
   if (strlen(ibuf) < 4) fatal("input too short.\n");
-  for (i = 0; i < strlen(ibuf); i++)
+  for (i = 0; i < (int)(strlen(ibuf)); i++)
     if (isalpha(ibuf[i])) ch++;
   if (ch < 4) fatal("not enough characters (letters).\n");
   if (strlen(ibuf) > 40) fatal("too many characters.\n");
