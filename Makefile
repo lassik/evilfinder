@@ -1,9 +1,9 @@
 CFLAGS = -Wall -Wextra -pedantic -std=c99 -Og -g
 
-all: shuffle ef
+all: ef
 
 clean:
-	rm -f shuffle ef core *.o core.* *~ a.out
+	rm -f ef core *.o core.* *~ a.out
 
 format:
 	clang-format -i *.c

@@ -13,6 +13,10 @@
 #include <sys/time.h>
 #include <signal.h>
 
+#ifndef DATABASE
+#define DATABASE "evilnumbers.dat"
+#endif
+
 #define MIN_INPUT_LEN 4
 #define MAX_INPUT_LEN 100
 
@@ -152,6 +156,29 @@ static unsigned int get_random(void) {
   }
   read(rf, &val, 4);
   return val;
+}
+
+static void add_record(struct Trec* records, int* counter, int num, const char* desc) {
+  int count = *counter;
+  records[count].num = num;
+  records[count].desc = strdup(desc);
+  count++;
+  *counter = count;
+}
+
+static void swap_records(struct Trec* a, struct Trec* b) {
+  struct Trec old_a;
+  memcpy(&old_a, a, sizeof(struct Trec));
+  memcpy(a, b, sizeof(struct Trec));
+  memcpy(b, &old_a, sizeof(struct Trec));
+}
+
+static void shuffle_records(struct Trec* records, unsigned int count) {
+  size_t i, k;
+  for (i = 0; i < count; i++) {
+    k = get_random() % count;
+    swap_records(&records[i], &records[k]);
+  }
 }
 
 static struct proof* copy_proof(const struct proof* proof) {
@@ -581,25 +608,21 @@ int asum[10], nsum[10];
 int main(void) {
   int z, i, ch = 0;
   FILE* f;
-  char ibuf[1024], tmp[256];
+  char ibuf[1024];
 
-
-  // We assume we're not in /tmp... how convinient!
-  sprintf(tmp, ".tmp-%d-%u", getpid(), (int)time(0));
-  sprintf(ibuf, "./shuffle <evilnumbers.dat >%s", tmp);
-  system(ibuf);
-
-  f = fopen(tmp, "r");
-  if (!f) fatal("cannot open tmp file");
-  unlink(tmp);
-
+  f = fopen(DATABASE, "r");
+  if (!f) fatal("cannot open " DATABASE);
   while (fgets(ibuf, sizeof(ibuf), f)) {
     int num;
     char* d;
-    if (ibuf[0] == '*')
+    if (strlen(ibuf) < 5)
+      continue;
+    if (isdigit(ibuf[0]))
+      num = atoi(ibuf);
+    else if ((ibuf[0] == '*') && isdigit(ibuf[1]))
       num = atoi(&ibuf[1]);
     else
-      num = atoi(ibuf);
+      continue;
     d = ibuf;
     while (*d && *d != ' ' && *d != '\t') d++;
     if (!*d) fatal("malformed config file");
@@ -607,19 +630,15 @@ int main(void) {
     if (!strlen(d)) fatal("empty description in config file?");
     if (strchr(d, '\n')) *strchr(d, '\n') = 0;
     if (ibuf[0] == '*') {
-      final[fintop].num = num;
-      final[fintop].desc = strdup(d);
-      fintop++;
+      add_record(final, &fintop, num, d);
     } else {
-      options[opttop].num = num;
-      options[opttop].desc = strdup(d);
-      opttop++;
+      add_record(options, &opttop, num, d);
     }
   }
-
+  shuffle_records(options, opttop);
+  shuffle_records(final, fintop);
   if (!opttop) fatal("no entries in the config file.");
   if (!fintop) fatal("no exit conditions in the config file.");
-
   fclose(f);
 
   // printf("Loaded %d config entries, %d of which are exit conditions.\n",opttop,fintop);
