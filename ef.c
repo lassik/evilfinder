@@ -236,6 +236,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip1:
+	break;
       }
       break;
     
@@ -257,6 +258,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip2:
+	break;
       }
       break;
     
@@ -278,6 +280,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip3:
+	break;
       }
       break;
     
@@ -298,6 +301,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip4:
+	break;
       }
       break;
     
@@ -318,6 +322,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip5:
+	break;
       }
       break;
     
@@ -338,6 +343,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip6:
+	break;
       }
       break;
     
@@ -359,6 +365,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip7:
+	break;
       }
       break;
     
@@ -381,6 +388,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip8:
+	break;
       }
       break;
     
@@ -403,6 +411,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip9:
+	break;
       }
       break;
     
@@ -425,6 +434,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip10:
+	break;
       }
       break;
 
@@ -447,6 +457,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip11:
+	break;
       }
       break;
     
@@ -469,6 +480,7 @@ inline void trace_proof(struct proof* p) {
         trace_proof(n);
         free(n);
     skip12:
+	break;
       }
       break;
 
