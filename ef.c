@@ -48,7 +48,7 @@ int opttop, fintop;
 #define fatal(x) exit(printf("<p><font color=red><b>FATAL: <i>%s</i></b></font>", x) ? 1 : 1)
 
 
-inline int backwardize(int z) {
+static int backwardize(int z) {
   // Laaame.
   char buf[128], b2[128];
   int i, q;
@@ -61,7 +61,7 @@ inline int backwardize(int z) {
   return atoi(b2);
 }
 
-inline char* backstring(int z) {
+static char* backstring(int z) {
   // Laaame.
   char buf[128];
   static char b2[128];
@@ -76,7 +76,7 @@ inline char* backstring(int z) {
 }
 
 
-inline int tooctal(int z) {
+static int tooctal(int z) {
   // Laaame.
   char buf[128];
   if (z < 0) return -31337000;
@@ -88,7 +88,7 @@ inline int tooctal(int z) {
 
 int rf = -1;
 
-inline unsigned int get_random(void) {
+static unsigned int get_random(void) {
   int val;
   if (rf < 0) {
     rf = open("/dev/urandom", O_RDONLY);
@@ -102,7 +102,7 @@ inline unsigned int get_random(void) {
 }
 
 
-inline void trace_proof(struct proof* p) {
+static void trace_proof(struct proof* p) {
   int i, a;
   char order[12] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
