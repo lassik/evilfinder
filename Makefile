@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -pedantic -std=c99 -Og -g
 
 all: evilfinder
 
-evilfinder: ef.c
+evilfinder: evilfinder.c
 	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
