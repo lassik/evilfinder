@@ -35,7 +35,7 @@
 
 #define MAXRES 1
 
-struct Trec {
+struct record {
   int num;
   char* desc;
 };
@@ -50,9 +50,8 @@ struct proof {
   int val;
 };
 
-
-struct Trec options[MAXOPT];
-struct Trec final[MAXOPT];
+struct record options[MAXOPT];
+struct record final[MAXOPT];
 
 char* rprolog[MAXRES];
 char* results[MAXRES];
@@ -166,7 +165,7 @@ static unsigned int get_random(void) {
   return val;
 }
 
-static void add_record(struct Trec* records, int* counter, int num, const char* desc) {
+static void add_record(struct record* records, int* counter, int num, const char* desc) {
   int count = *counter;
   records[count].num = num;
   records[count].desc = strdup(desc);
@@ -174,14 +173,14 @@ static void add_record(struct Trec* records, int* counter, int num, const char* 
   *counter = count;
 }
 
-static void swap_records(struct Trec* a, struct Trec* b) {
-  struct Trec old_a;
-  memcpy(&old_a, a, sizeof(struct Trec));
-  memcpy(a, b, sizeof(struct Trec));
-  memcpy(b, &old_a, sizeof(struct Trec));
+static void swap_records(struct record* a, struct record* b) {
+  struct record old_a;
+  memcpy(&old_a, a, sizeof(struct record));
+  memcpy(a, b, sizeof(struct record));
+  memcpy(b, &old_a, sizeof(struct record));
 }
 
-static void shuffle_records(struct Trec* records, unsigned int count) {
+static void shuffle_records(struct record* records, unsigned int count) {
   size_t i, k;
   for (i = 0; i < count; i++) {
     k = get_random() % count;
