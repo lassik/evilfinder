@@ -1,8 +1,9 @@
 /*
-   The Evil Finder
-   Copyright (C) 2002 by Michal Zalewski <lcamtuf@coredump.cx>
+  The Evil Finder
+  Copyright (C) 2002 by Michal Zalewski <lcamtuf@coredump.cx>
 */
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -96,7 +97,7 @@ static void write_html_header(char* a, char* b, char* c) {
   write_raw_string("</b>\n<p>\n<pre>");
   write_html_string(b);
   write_raw_string("</pre>\n\n<p>");
-  write_html_string(c);
+  write_raw_string(c);
   write_raw_string("\n");
 }
 
@@ -153,6 +154,16 @@ static unsigned int get_random(void) {
   return val;
 }
 
+static void proof_printf(struct proof* proof, const char* format, ...) {
+  va_list ap;
+  size_t n;
+  va_start(ap, format);
+  n = strlen(proof->how);
+  vsnprintf(&proof->how[n], sizeof(proof->how) - n, format, ap);
+  n = strlen(proof->how);
+  snprintf(&proof->how[n], sizeof(proof->how) - n, "%s", "\n<p>\n");
+  va_end(ap);
+}
 
 static void trace_proof(struct proof* p) {
   int i, a;
@@ -283,7 +294,7 @@ static void trace_proof(struct proof* p) {
         n->val = p->val + options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Add %d, %s - the result is %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Add %d, %s - the result is %d.", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip1:
@@ -305,7 +316,7 @@ skip1:
         n->val = p->val + backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Add %s to it - this is %s, written backwards - you will get %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
+        proof_printf(n, "Add %s to it - this is %s, written backwards - you will get %d.", backstring(options[i].num), options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip2:
@@ -327,7 +338,7 @@ skip2:
         n->usednum[n->utop++] = options[i].num;
         n->val = backwardize(p->val) + options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Turn the number backwards, and add %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Turn the number backwards, and add %d - %s. The number is now %d.", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip3:
@@ -348,7 +359,7 @@ skip3:
         n->val = p->val - options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Subtract %d, %s. The result will be %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Subtract %d, %s. The result will be %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip4:
@@ -369,7 +380,7 @@ skip4:
         n->val = p->val - backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Subtract %s from the number - this is %s, written backwards. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
+        proof_printf(n, "Subtract %s from the number - this is %s, written backwards. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip5:
@@ -390,7 +401,7 @@ skip5:
         n->val = backwardize(p->val) - options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Turn the number backwards, subtract %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Turn the number backwards, subtract %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip6:
@@ -412,7 +423,7 @@ skip6:
         n->val = p->val * options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Multiply it by %d, %s - the number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Multiply it by %d, %s - the number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip7:
@@ -435,7 +446,7 @@ skip7:
         n->val = p->val * backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Multiply the number by %s - this is %s, from right to left. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
+        proof_printf(n, "Multiply the number by %s - this is %s, from right to left. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip8:
@@ -458,7 +469,7 @@ skip8:
         n->val = backwardize(p->val) * options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Turn the number backwards, multiply by %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Turn the number backwards, multiply by %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip9:
@@ -481,7 +492,7 @@ skip9:
         n->val = p->val / options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Divide by %d, %s - the result is %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Divide by %d, %s - the result is %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip10:
@@ -504,7 +515,7 @@ skip10:
         n->val = p->val / backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Divide the number by %s - this is %s, backwards. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
+        proof_printf(n, "Divide the number by %s - this is %s, backwards. It gives %d.\n<p>\n", backstring(options[i].num), options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip11:
@@ -527,7 +538,7 @@ skip11:
         n->val = backwardize(p->val) / options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
-        sprintf(&n->how[strlen(n->how)], "Turn the number backwards, divide by %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
+        proof_printf(n, "Turn the number backwards, divide by %d - %s. The number is now %d.\n<p>\n", options[i].num, options[i].desc, n->val);
         trace_proof(n);
         free(n);
 skip12:
