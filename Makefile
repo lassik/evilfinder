@@ -1,4 +1,4 @@
-CFLAGS = -ggdb -Wall -O9 -fomit-frame-pointer -funroll-loops -fexpensive-optimizations -ffast-math
+CFLAGS = -Wall -Wextra -pedantic -std=c99 -Og -g
 
 all: shuffle ef
 
