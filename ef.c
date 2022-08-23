@@ -154,6 +154,14 @@ static unsigned int get_random(void) {
   return val;
 }
 
+static struct proof* copy_proof(const struct proof* proof) {
+  struct proof* copy;
+  copy = calloc(1, sizeof(*copy));
+  if (!copy) fatal("Out of memory.");
+  memcpy(copy, proof, sizeof(*copy));
+  return copy;
+}
+
 static void proof_printf(struct proof* proof, const char* format, ...) {
   va_list ap;
   size_t n;
@@ -333,8 +341,7 @@ skip2:
         if (backwardize(p->val) < 0) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip3;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->usednum[n->utop++] = options[i].num;
         n->val = backwardize(p->val) + options[i].num;
         n->nest++;
@@ -354,8 +361,7 @@ skip3:
         if (p->val - options[i].num < 100) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip4;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val - options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -375,8 +381,7 @@ skip4:
         if (p->val - backwardize(options[i].num) < 100) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip5;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val - backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -396,8 +401,7 @@ skip5:
         if (backwardize(p->val) - options[i].num < 100) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip6;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = backwardize(p->val) - options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -418,8 +422,7 @@ skip6:
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip7;
         if (options[i].num == 1) continue;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val * options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -441,8 +444,7 @@ skip7:
         if (options[i].num == 1) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip8;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val * backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -464,8 +466,7 @@ skip8:
         if (options[i].num == 1) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip9;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = backwardize(p->val) * options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -487,8 +488,7 @@ skip9:
         if (options[i].num == 1) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip10;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val / options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -510,8 +510,7 @@ skip10:
         if (options[i].num == 1) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip11;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = p->val / backwardize(options[i].num);
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
@@ -533,8 +532,7 @@ skip11:
         if (options[i].num == 1) continue;
         for (t = 0; t < p->utop; t++)
           if (options[i].num == p->usednum[t]) goto skip12;
-        n = malloc(sizeof(struct proof));
-        memcpy(n, p, sizeof(struct proof));
+        n = copy_proof(p);
         n->val = backwardize(p->val) / options[i].num;
         n->usednum[n->utop++] = options[i].num;
         n->nest++;
