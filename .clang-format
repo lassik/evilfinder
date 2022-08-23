@@ -1,0 +1,8 @@
+BasedOnStyle: Google
+AlignAfterOpenBracket: AlwaysBreak
+AllowShortCaseLabelsOnASingleLine: true
+ColumnLimit: 0
+IndentCaseLabels: false
+IndentGotoLabels: false
+MaxEmptyLinesToKeep: 2
+SortIncludes: false
