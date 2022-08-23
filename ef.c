@@ -50,6 +50,55 @@ int opttop, fintop;
 
 #define fatal(x) exit(printf("<p><font color=red><b>FATAL: <i>%s\n</i></b></font>", x) ? 1 : 1)
 
+static void
+write_raw_string(const char* str) {
+  printf("%s", str);
+}
+
+// HTML output
+
+static const char*
+html_char_escape(int ch) {
+  switch (ch) {
+  case '"': return "&quot;";
+  case '&': return "&amp;";
+  case '<': return "&lt;";
+  case '>': return "&gt;";
+  }
+  return NULL;
+}
+
+static void
+write_html_char(int ch) {
+  const char* esc;
+
+  if ((esc = html_char_escape(ch))) {
+    printf("%s", esc);
+  } else {
+    printf("%c", ch);
+  }
+}
+
+static void
+write_html_string(const char* str) {
+  for (; *str; str++) {
+    write_html_char(*str);
+  }
+}
+
+static void write_html_header(char* a, char* b, char* c) {
+  write_raw_string("<b>");
+  write_html_string("**** THE PROOF THAT ");
+  write_raw_string("<i>");
+  write_html_string(a);
+  write_raw_string("</i>");
+  write_html_string(" IS EVIL ****");
+  write_raw_string("</b>\n<p>\n<pre>");
+  write_html_string(b);
+  write_raw_string("</pre>\n\n<p>");
+  write_html_string(c);
+  write_raw_string("\n");
+}
 
 static int backwardize(int z) {
   // Laaame.
@@ -772,7 +821,7 @@ retry:
   // Get random result
 
   z = get_random() % restop;
-  printf("<b>**** THE PROOF THAT <i>%s</i> IS EVIL ****</b>\n<p>\n<pre>%s</pre>\n\n<p>%s\n", ibuf, rprolog[z], results[z]);
+  write_html_header(ibuf, rprolog[z], results[z]);
 
   return 0;
 }
