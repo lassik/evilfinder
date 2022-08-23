@@ -6,109 +6,106 @@
 #
 # [*]number	description
 #
-# If the number is prefixed with '*', it is considered a 'proof'. In other
+# If the number is prefixed with '*', it is considered a proof point. In other
 # words, as soon as the program manages to get to this number, the subject
 # is considered to be proven evil. Pick only universally recognized, truly
-# evil numbers (666, or the year US patent system was established). 
+# evil numbers (666, etc).
 #
-# Other numbers are used to reach the desired result. Use anything, dates,
-# important numerological symbols, etc, etc.
+# Other numbers are used to reach the desired result. Use anything reasonably
+# recognizable - dates, important numerological symbols, etc, etc.
 #
-# The description part should have less than +/- 100 chars and should describe
-# the number in a manner that is suitable to follow the number in the sentence.
+# The description part should be less than ~100 chars and needs to describe
+# the number in a manner that can be incorporated into a sane sentence.
 # For example, "the year Michael Jackson was born" or "the symbol of sin"
-# are correct, "this is my favorite number" is not. Make the descriptions
-# colorful and vivid, if possible. It's OK to combine elements of conspiration
-# theories or such with the descriptions. Make sure that all descriptions
-# and numbers are "evil". Don't include events or numbers that do not refer
-# to any disasters, plagues, are related to very little known and boring
-# facts, etc.
+# are correct, "this is my favorite number" is not.
 #
 
-*1790	the year US patent system was established (eevil)
-*666	the number of the Beast
-1778    the year Oliver Pollock invented '$', the symbol of exploitation, suffering and injustice
-1936    the year Bruno Hauptmann, baby killer, was executed
-1964	the year Beatles with "Can't buy me love" topped the charts in a very mysterious way
-1968    the year Martin Luther King was shot to death
-1531    the year Richard Roose was conveniently boiled to death for trying to poison an archbishop
-1951	the year the Rosenbergs were sentenced to death for spying by the US
-1954	the year Elvis recorded his debut single, putting the end to all morality and good taste
-1926	the year "Playboy" publisher, Hugh Hefner, was born
-1912	the year Titanic went for its first and last voyage
-1930	the year synthetic rubber was first produced, endangering the concept of intercourse for the purpose of procreation
-1899	the year "Scrabble" was invented to promote violence and anger
-1865 	the year Lincoln was shot
-1934	the year first laundromat opened in Texas, giving birth to darkest, twisted urban fears
-1934	the year Shirley Temple starred in her first movie
+*1952	the year the US patent system has been established in its current form
+*666	the Number of the Beast
 *1889	the year Adolf Hitler was born
-*1976	the year George Harrison performed the lumberjack song with Monty Python - if you have seen it, you should understand
-1904	the year Oppenheimer, the man who created the atomic bomb, was born
-1792 	the year guillotine was first used
-1945	the year a worldwide conspiracy known as the United Nations was founded
-1895	the year Rudolph Hess was born
-1986	the year of the Chernobyl "incident"
-1686	the year Newton published wildly misunderstood "Principia"
-1937	the year Saddam Hussein twins were born
-1945	the year Mussolini was executed for the first time
-1808	the year Turri constructed the first typewriter, giving birth to bad publicity
-1945	the year Hitler faked his suicide
-1945	the year Hiroshima and Nagasaki were nuked to make the world a better place
-1181	the year UFO was first observed in China and Japan
-1950	the year Steve Wozniak, the faithful worshipper, was born
-1887	the year Erwin Schrodinger, known for hatred to all furry animals and heresy, was born
-1927	the year Fidel Castro was born
-1939	the year WW II started
+*1939   the year the Second World War has begun
+*1986	the year of the Chernobyl disaster
+*1957   the year Osama bin Laden was born
+*1945	the year of Hiroshima and Nagasaki bombings
+*1984   the year of the Bhopal disaster
+*1966   the year Anthon LaVey founded the Church of Satan
+
+1778    the year Oliver Pollock created the dollar sign
+1942    the year Ted Kaczynski was born
+1934    the year Charles Manson was born
+1968    the year The Beatles recorded "Helter Skelter"
+1974    the year of Ted Bundy's first killings
+1968    the year of Martin Luther King's assassination
+1994    the year Jeffrey Dahmer died in prison
+1954	the year Elvis recorded his debut single
+1953    the year Hugh Hefner started publishing "Playboy"
+1974    the year Larry Flynt started publishing "Hustler"
+1912	the year of Titanic's first and only voyage
+1908    the year of the Tunguska event
+1943    the year Nikola Tesla died
+1960    the year first contraceptive pills hit the market
+1865 	the year Lincoln was shot
+1934	the year the first laundromat opened in Texas
+1976	the year George Harrison performed the lumberjack song with Monty Python
+1942    the year Oppenheimer and Groves kicked off the Manhattan Project
+1792 	the year the guillotine debuted in France
+1945	the year the United Nations has been founded
+1859    the year Charles Darwin published "On the Origin of Species"
+1714    the year Henry Mill patented the typewriter
+1945	the year Hitler commited suicide
+1181    the year of first recorded UFO sightings in China and Japan
+1955    the year Steve Jobs was born
+1887    the year Erwin Schrodinger, cat-killer, was born
 1969	the year of Woodstock
-1977	the year Elvis left the planet
-1834	the year Vesuvius erupted
-1958	the year Nabokov's "Lolita" got published
-1986	the year a postman in Okhlahoma gone postal, killing 14
-1957	the year DEC was founded
-79	the year Vesuvius erupted
+1977	the year Elvis has left the building
+79	the year Vesuvius erupted and destroyed Pompeii
+1958	the year Nabokov published his "Lolita"
+1975    the year Microsoft was incorporated
+1985    the year of Microsoft Windows 1.0
+1969    the birth year of Unix
+1556    the year of the deadliest earthquake in history (Shensi province, China)
 64	the year of the Great Fire of Rome
-166	the year Roman Empire was devastated by a plague
-445	the year Attila the Hun attacked western Europe
-1609	the year Gallileo, inspired by the Satan himself, came up with his ridiculous theory
-1789	the year of French Revolution, a bloody farce engineered by the Illuminati
-1929	the year Bingo was invented, taking many lives in years to come
-1952	the year killer fog haunted London
-1776 	the year masonry founded Phi Beta Kappa
-1876	the year first crematorium in the United States opened
-1947	the year Aleister Crowley paid a longer visit to hell
+443	the year Attila the Hun attacked western Europe
+1543    the year Copernicus attacked the geocentric model
+1929	the year the game of Bingo took its current shape
 1815	the year first commercial cheese factory was established
-1288	the year it was made legal for women to propose to men
-69	the year of the destruction of Jerusalem
-69	the symbol of perversion and pleasue in sin
 1666	the year of the Great London Fire
-1948	the year World Health Organization was formed to defend the world from democracy
 1957 	the year Ford introduced the Edsel
-1966 	the year "Star Trek" premiered
-1875 	the year first newspaper cartoon strip was published
-1970 	the year IBM announced S/370
-1954 	the year when first FORTRAN computer program was executed
-1995	the year O J Simpson was acquitted for double murder
+1954 	the year the first FORTRAN computer program was executed
 1967 	the year Che Guevara was executed in Bolivia
-1912 	the year Theodore Roosevelt was shot
-1979 	the year Voluntary Euthanasia Society published how-to-do-it suicide guide
-1	the number of unity 
-3	the symbol of fulfillment
-7	the sacred number of Illuminati
-11	the symbol of judgment and disorder
-17	the symbol of domination
-18	the symbol of bondage
-21	the symbol of the greater sin
-23	the symbol of death
-25	the symbol of approval for the sin
-38	the symbol of slavery
-39	the symbol of disease
-200	the symbol of greed
-600	the symbol of war
-111	the only triplet that can ever be prime
-6	the smallest perfect number
-1983	the year Microsoft introduced Windows 1.0
-140     the smallest harmonic divisor number
-911	the date of WTC attacks
+1995	the year O. J. Simpson was acquitted in the murder trial
+2012    the end of the Mayan calendar
+1989    the year of the Exxon Valdez spill
+1959    the year of "Plan 9 from Outer Space"
+1953    the year Ron Hubbard incorporated the Church of Scientology
+1954    the year Alan Turing died of cyanide poisoning
+476     the year of the fall of the Roman empire
+1969    the year of the manned mission to the Moon
+1986    the year of the Challenger disaster
+1919    the year of the Boston Molasses Disaster
 
-
-
+69	the symbol of sinful perversion
+8       the symbol of luck and wealth
+1       the symbol of unity and strength
+2       the symbol of duality
+2       the only even prime number
+3       the number of spatial dimensions we live in
+3       the symbol of magic
+13      the symbol of bad luck
+6       the smallest perfect number
+6       the number of senses
+10      the base of our number system
+125     the only number known that contains all its proper divisors as proper substrings
+33      the sacred number of the Illuminati
+22      the number of chapters in the Book of Revelation
+27      the number of books in the New Testament
+42      the answer to the ultimate question of life
+1729    the smallest number expressible as the sum of two cubes in two different ways
+4       the number of letters in Jimmy Carter's middle name
+7       the number of deadly sins and the symbol of magic
+5       the number of books in Torah
+11      the number of spacetime dimensions in string theory
+12      the number of sons of Norse god Odin
+14      the number of pieces Osiris was torn into in Egyptian mythology
+16      the atomic number of sulfur
+79      the atomic number of gold
