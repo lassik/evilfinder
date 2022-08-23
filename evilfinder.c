@@ -3,15 +3,12 @@
   Copyright (C) 2002 by Michal Zalewski <lcamtuf@coredump.cx>
 */
 
+#include <ctype.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include <fcntl.h>
-#include <ctype.h>
-#include <sys/time.h>
-#include <signal.h>
+#include <unistd.h>
 
 #ifndef PROGNAME
 #define PROGNAME "evilfinder"
@@ -23,6 +20,10 @@
 
 #ifndef DATABASE
 #define DATABASE "evilnumbers.dat"
+#endif
+
+#ifndef DEVRAND
+#define DEVRAND "/dev/urandom"
 #endif
 
 #define MIN_INPUT_LEN 4
@@ -149,19 +150,15 @@ static int tooctal(int z) {
   return atoi(buf);
 }
 
-
-int rf = -1;
-
 static unsigned int get_random(void) {
-  int val;
-  if (rf < 0) {
-    rf = open("/dev/urandom", O_RDONLY);
-    if (rf < 0) {
-      perror("/dev/urandom");
-      exit(1);
-    }
+  static FILE* rf;
+  unsigned int val;
+  if (!rf) {
+    rf = fopen(DEVRAND, "rb");
+    if (!rf)
+      fatal("cannot open " DEVRAND);
   }
-  read(rf, &val, 4);
+  fread(&val, sizeof(val), 1, rf);
   return val;
 }
 
