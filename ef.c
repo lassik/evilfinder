@@ -12,6 +12,9 @@
 #include <sys/time.h>
 #include <signal.h>
 
+#define MIN_INPUT_LEN 4
+#define MAX_INPUT_LEN 100
+
 #define MAXOPT 1024
 #define MAXBUF 1024
 #define MINNEST 3
@@ -567,13 +570,15 @@ int main(void) {
     char* x;
     x = getenv("QUERY_STRING_UNESCAPED");
     if (!x) fatal("no input provided.\n");
-    if (strlen(x) > 100) fatal("suspiciously long input.\n");
+    if (strlen(x) > MAX_INPUT_LEN)
+      fatal("suspiciously long input.\n");
     if (!strchr(x, '=')) fatal("malformed query string.\n");
     x = strchr(x, '=') + 1;
     strcpy(ibuf, x);
   }
 
-  if (strlen(ibuf) < 4) fatal("input too short.\n");
+  if (strlen(ibuf) < MIN_INPUT_LEN)
+    fatal("input too short.\n");
   for (i = 0; i < (int)(strlen(ibuf)); i++)
     if (isalpha(ibuf[i])) ch++;
   if (ch < 4) fatal("not enough characters (letters).\n");
