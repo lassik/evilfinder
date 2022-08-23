@@ -48,7 +48,7 @@ int restop;
 
 int opttop, fintop;
 
-#define fatal(x) exit(printf("<p><font color=red><b>FATAL: <i>%s</i></b></font>", x) ? 1 : 1)
+#define fatal(x) exit(printf("<p><font color=red><b>FATAL: <i>%s\n</i></b></font>", x) ? 1 : 1)
 
 
 static int backwardize(int z) {
@@ -486,7 +486,7 @@ skip12:
       }
       break;
 
-    default: fatal("Whoops.\n");
+    default: fatal("Whoops.");
     }
 
   // Ok. All set.
@@ -532,7 +532,7 @@ int main(void) {
   system(ibuf);
 
   f = fopen(tmp, "r");
-  if (!f) fatal("cannot open tmp file\n");
+  if (!f) fatal("cannot open tmp file");
   unlink(tmp);
 
   while (fgets(ibuf, sizeof(ibuf), f)) {
@@ -544,9 +544,9 @@ int main(void) {
       num = atoi(ibuf);
     d = ibuf;
     while (*d && *d != ' ' && *d != '\t') d++;
-    if (!*d) fatal("malformed config file\n");
+    if (!*d) fatal("malformed config file");
     while (*d == ' ' || *d == '\t') d++;
-    if (!strlen(d)) fatal("empty description in config file?\n");
+    if (!strlen(d)) fatal("empty description in config file?");
     if (strchr(d, '\n')) *strchr(d, '\n') = 0;
     if (ibuf[0] == '*') {
       final[fintop].num = num;
@@ -559,8 +559,8 @@ int main(void) {
     }
   }
 
-  if (!opttop) fatal("no entries in the config file.\n");
-  if (!fintop) fatal("no exit conditions in the config file.\n");
+  if (!opttop) fatal("no entries in the config file.");
+  if (!fintop) fatal("no exit conditions in the config file.");
 
   fclose(f);
 
@@ -569,21 +569,21 @@ int main(void) {
   {
     char* x;
     x = getenv("QUERY_STRING_UNESCAPED");
-    if (!x) fatal("no input provided.\n");
+    if (!x) fatal("no input provided.");
     if (strlen(x) > MAX_INPUT_LEN)
-      fatal("suspiciously long input.\n");
-    if (!strchr(x, '=')) fatal("malformed query string.\n");
+      fatal("suspiciously long input.");
+    if (!strchr(x, '=')) fatal("malformed query string.");
     x = strchr(x, '=') + 1;
     strcpy(ibuf, x);
   }
 
   if (strlen(ibuf) < MIN_INPUT_LEN)
-    fatal("input too short.\n");
+    fatal("input too short.");
   for (i = 0; i < (int)(strlen(ibuf)); i++)
     if (isalpha(ibuf[i])) ch++;
-  if (ch < 4) fatal("not enough characters (letters).\n");
-  if (strlen(ibuf) > 40) fatal("too many characters.\n");
-  if (strchr(ibuf, '<')) fatal("go cross-script yourself.\n");
+  if (ch < 4) fatal("not enough characters (letters).");
+  if (strlen(ibuf) > 40) fatal("too many characters.");
+  if (strchr(ibuf, '<')) fatal("go cross-script yourself.");
 
   z = 0;
 
@@ -763,11 +763,11 @@ retry:
 
   if (stopped) {
     if (retrynum < 5) goto retry;
-    fatal("System timeout.\n");
+    fatal("System timeout.");
   }
 
 
-  if (!restop) fatal("There is no way to prove the evilness of this!\n");
+  if (!restop) fatal("There is no way to prove the evilness of this!");
 
   // Get random result
 
