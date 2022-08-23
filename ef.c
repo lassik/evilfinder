@@ -519,7 +519,7 @@ int asum[10], nsum[10];
 int main(void) {
   int z, i, ch = 0;
   FILE* f;
-  unsigned char ibuf[1024], tmp[256];
+  char ibuf[1024], tmp[256];
 
 
   // We assume we're not in /tmp... how convinient!
