@@ -1,11 +1,14 @@
 CFLAGS = -Wall -Wextra -pedantic -std=c99 -Og -g
 
-all: ef
+all: evilfinder
+
+evilfinder: ef.c
+	$(CC) $(CFLAGS) -o $@ $<
 
 clean:
-	rm -f ef core *.o core.* *~ a.out
+	rm -f evilfinder core core.* *~
 
 format:
-	clang-format -i *.c
+	clang-format -i evilfinder.c
 
 .PHONY: all clean format
