@@ -13,6 +13,14 @@
 #include <sys/time.h>
 #include <signal.h>
 
+#ifndef PROGNAME
+#define PROGNAME "evilfinder"
+#endif
+
+#ifndef PROGVERSION
+#define PROGVERSION "6.6.6"
+#endif
+
 #ifndef DATABASE
 #define DATABASE "evilnumbers.dat"
 #endif
@@ -602,13 +610,66 @@ void interrupter(int x) {
   retrynum++;
 }
 
-
 int asum[10], nsum[10];
 
-int main(void) {
+static void generic_usage(FILE* stream, int status) {
+  fprintf(stream, "%s\n", "usage: " PROGNAME " query");
+  exit(status);
+}
+
+static void usage(void) {
+  generic_usage(stderr, EXIT_FAILURE);
+}
+
+static void version(void) {
+  printf("%s %s\n", PROGNAME, PROGVERSION);
+  exit(EXIT_SUCCESS);
+}
+
+int main(int argc, char** argv) {
   int z, i, ch = 0;
+  int cgiflag, helpflag, versionflag;
   FILE* f;
+  const char* query;
   char ibuf[1024];
+
+  cgiflag = helpflag = versionflag = 0;
+  while ((ch = getopt(argc, argv, "hV")) != -1) {
+    switch (ch) {
+    case 'h':
+      helpflag = 1;
+      break;
+    case 'V':
+      versionflag = 1;
+      break;
+    default:
+      usage();
+    }
+  }
+  argc -= optind;
+  argv += optind;
+  if (helpflag)
+    generic_usage(stdout, 0);
+  if (versionflag)
+    version();
+
+  if (cgiflag) {
+    if (argc)
+      usage();
+    query = getenv("QUERY_STRING_UNESCAPED");
+    if (!query)
+      fatal("no input provided.");
+    query = strchr(query, '=');
+    if (!query)
+      fatal("malformed query string.");
+    query++;
+  } else {
+    if (argc != 1)
+      usage();
+    query = argv[0];
+  }
+  if (strlen(query) > MAX_INPUT_LEN)
+    fatal("suspiciously long input.");
 
   f = fopen(DATABASE, "r");
   if (!f) fatal("cannot open " DATABASE);
@@ -643,19 +704,10 @@ int main(void) {
 
   // printf("Loaded %d config entries, %d of which are exit conditions.\n",opttop,fintop);
 
-  {
-    char* x;
-    x = getenv("QUERY_STRING_UNESCAPED");
-    if (!x) fatal("no input provided.");
-    if (strlen(x) > MAX_INPUT_LEN)
-      fatal("suspiciously long input.");
-    if (!strchr(x, '=')) fatal("malformed query string.");
-    x = strchr(x, '=') + 1;
-    strcpy(ibuf, x);
-  }
-
+  snprintf(ibuf, sizeof(ibuf), "%s", query);
   if (strlen(ibuf) < MIN_INPUT_LEN)
     fatal("input too short.");
+  ch = 0;
   for (i = 0; i < (int)(strlen(ibuf)); i++)
     if (isalpha(ibuf[i])) ch++;
   if (ch < 4) fatal("not enough characters (letters).");
